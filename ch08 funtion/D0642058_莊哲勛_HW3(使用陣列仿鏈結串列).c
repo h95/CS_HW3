@@ -1,43 +1,43 @@
-/*D0642058_²ø­õ³Ô_HW3.c(¥Îarray¥écircularly_linked_list)*/ 
+/*D0642058_èŠå“²å‹›_HW3.c(ç”¨arrayä»¿circularly_linked_list)*/ 
 #include <stdio.h>
 #define LEN 17 
 
-void power_off(int);						//°±¹q¶¶§Ç¨ç¼Æ(¶Ç¤Jªº¼Æ¬O¶¡¹j¼Æ)
+void power_off(int);						//åœé›»é †åºå‡½æ•¸(å‚³å…¥çš„æ•¸æ˜¯é–“éš”æ•¸)
 
 int main()
 {
 	for(int i = 5; i <= 8; i++)
 	{
-		printf("%dªº°±¹q¶¶§Ç¬°¡G", i);
-		power_off(i);						//¦L¥X°±¹q¶¶§Ç 
+		printf("%dçš„åœé›»é †åºç‚ºï¼š", i);
+		power_off(i);						//å°å‡ºåœé›»é †åº 
 		printf("\n");
 	}
 
 	return 0;
 }
 
-void power_off(int num)						//°±¹q¶¶§Ç¨ç¼Æ(¶Ç¤Jªº¼Æ¬O¶¡¹j¼Æ) 
+void power_off(int num)						//åœé›»é †åºå‡½æ•¸(å‚³å…¥çš„æ•¸æ˜¯é–“éš”æ•¸) 
 {
-	int dist[LEN + 1], index = 1, prev, temp;	//¤À°Ï°}¦C, ¯Á¤Ş­È(ªì©l¬°0), «e¤@¦ì, ¼È¦s 
+	int dist[LEN + 1], index = 1, prev, temp;	//åˆ†å€é™£åˆ—, ç´¢å¼•å€¼(åˆå§‹ç‚º1), å‰ä¸€ä½, æš«å­˜ 
 	
-	for(int i = 1; i <= LEN; i++)			//ªì©l¤Æ°}¦C, ©ñªº­È¬O¤U¤@¦ìªº¯Á¤Ş­È 
+	for(int i = 1; i <= LEN; i++)			//åˆå§‹åŒ–é™£åˆ—, æ”¾çš„å€¼æ˜¯ä¸‹ä¸€ä½çš„ç´¢å¼•å€¼ 
 	{
 		if(i != LEN)
-			dist[i] = i + 1;				//¦pªG¤£¬O³Ì«á¤@¦ì, ¤U¤@¦ì¬O¦Û¨­ +1 
+			dist[i] = i + 1;				//å¦‚æœä¸æ˜¯æœ€å¾Œä¸€ä½, ä¸‹ä¸€ä½æ˜¯è‡ªèº« +1 
 		else
-			dist[i] = 1;					//¦pªG¬O³Ì«á¤@¦ì, ¤U¤@¦ì¬O²Ä¤@¦ì(0)
+			dist[i] = 1;					//å¦‚æœæ˜¯æœ€å¾Œä¸€ä½, ä¸‹ä¸€ä½æ˜¯ç¬¬ä¸€ä½
 	}
 	
-	for(int i = 0; i < LEN; i++)			//¦L¥X©Ò¦³°Ï°ì, ¦@ LEN ­Ó 
+	for(int i = 0; i < LEN; i++)			//å°å‡ºæ‰€æœ‰å€åŸŸ, å…± LEN å€‹ 
 	{
-		printf("%3d", index);				//¦L¥X·í«e­n°±¹qªº°Ï°ì 
+		printf("%3d", index);				//å°å‡ºç•¶å‰è¦åœé›»çš„å€åŸŸ 
 		
 		prev = index;
-		while(dist[prev] != index)			//§ä¥X«e¤@­Ó«ü¦V·í«e°Ï°ìªº°Ï°ì, §Y while(prev->next != current) prev = prev->next;
+		while(dist[prev] != index)			//æ‰¾å‡ºå‰ä¸€å€‹æŒ‡å‘ç•¶å‰å€åŸŸçš„å€åŸŸ, å³ while(prev->next != current) prev = prev->next;
 			prev = dist[prev];
-		dist[prev] = dist[index];			//«e¤@­Ó°Ï°ì«ü¦V·í«e«ü¦Vªº°Ï°ì, §Y prev->next = current->next; 
+		dist[prev] = dist[index];			//å‰ä¸€å€‹å€åŸŸæŒ‡å‘ç•¶å‰æŒ‡å‘çš„å€åŸŸ, å³ prev->next = current->next; 
 		
-		for(int j = 0; j < num; j++)		//·í«e°Ï°ìÅÜ¦¨¤U num ­Ó«ü¦Vªº°Ï°ì, §Y current = current->next;­«½Æ num ¦¸ 
+		for(int j = 0; j < num; j++)		//ç•¶å‰å€åŸŸè®Šæˆä¸‹ num å€‹æŒ‡å‘çš„å€åŸŸ, å³ current = current->next;é‡è¤‡ num æ¬¡ 
 			index = dist[index];
 	}
 }
